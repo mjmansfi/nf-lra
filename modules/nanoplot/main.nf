@@ -8,7 +8,7 @@ process nanoplot {
   publishDir "${params.outdir}/nanoplot",
     mode: "copy", overwrite: true
 
-  // container "luslab/nf-modules-nanoplot:latest"
+  container "mjmansfi/nf-modules-nanoplot:0.1"
 
   input:
     tuple val(sample_id), path(reads)
@@ -26,7 +26,7 @@ process nanoplot {
   }
 
   // Construct command line
-  nanoplot_command = "NanoPlot${args} -t ${task.cpus} --N50 -f pdf --fastq $reads -p ${sample_id}."
+  nanoplot_command = "NanoPlot ${args} -t ${task.cpus} --N50 -f pdf --fastq $reads -p ${sample_id}."
 
   // Logging
   if (params.verbose){

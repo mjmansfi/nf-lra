@@ -17,14 +17,14 @@ params.verbose = true
 /* Module inclusions
 --------------------------------------------------------------------------------------*/
 
-include nanoplot from '../main.nf'
+include nanoplot from "../main.nf"
 
 /*------------------------------------------------------------------------------------*/
 /* Define input channels
 --------------------------------------------------------------------------------------*/
 
 testDataNanopore= [
-    ['test-sample', "$baseDir/input/test-set.fastq.gz"],
+    ["test-sample", "$baseDir/input/test-set.fastq.gz"],
 ]
 
 //Define test data input channels
@@ -44,5 +44,5 @@ workflow {
     nanoplot ( ch_fastq_data )
 
     // Collect file names and view output
-    // nanoplot.out.nanoplotOutdir | view
+    nanoplot.out.nanoplotOutputs | view
 }
